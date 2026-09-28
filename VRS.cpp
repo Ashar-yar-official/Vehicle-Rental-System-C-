@@ -48,48 +48,48 @@ int found;
 // FUNCTIONS DECLARATION
 
 void mainMenu(){
-		cout<<"1. Customer Portal"<<endl;
-		cout<<"2. Admin Portal"<<endl;
-		cout<<"3. Exit\n"<<endl;
+		cout<<"\t\t1. Customer Portal"<<endl;
+		cout<<"\t\t2. Admin Portal"<<endl;
+		cout<<"\t\t3. Exit\n"<<endl;
 		int option;
-		cout<<"Enter:";
+		cout<<"\t\tEnter:";
 		cin>>option;
 		
 		if(option==1)
 		{
-			cout<<"\nCustomer Portal"<<endl;
+			cout<<"\n\t\tCustomer Portal"<<endl;
 			customerMenu();
 		}
 		else if(option==2)
 		{
-			cout<<"\nAdmin Portal"<<endl;
+			cout<<"\n\t\tAdmin Portal"<<endl;
 			adminMenu();
 		}
 		else if(option==3)
 		{
-			cout<<"Program Ended......."<<endl;
+			cout<<"\t\tProgram Ended......."<<endl;
 		}
 		else{
-			cout<<"Invalid Choice Select only 1,2 and 3\n"<<endl;
+			cout<<"\t\tInvalid Choice Select only 1,2 and 3\n"<<endl;
 			mainMenu();	
 		}
 		
 }
 void customerMenu(){
-			cout<<"\n1. Login"<<endl;
-			cout<<"2. Register"<<endl;
-			cout<<"3. Back\n\n"<<endl;
+			cout<<"\n\t\t1. Login"<<endl;
+			cout<<"\t\t2. Register"<<endl;
+			cout<<"\t\t3. Back\n\n"<<endl;
 			int option;
-			cout<<"Enter:";
+			cout<<"\t\tEnter:";
 			cin>>option;
 			
 			if(option==1)
 			{
-				cout<<"Enter Your Credentials"<<endl;
+				cout<<"\t\tEnter Your Credentials"<<endl;
 				cusLogin();
 			}
 			else if(option==2){
-				cout<<"Enter Details"<<endl;
+				cout<<"\t\tEnter Details"<<endl;
 				cusRegister();
 			}
 			else if(option==3)
@@ -97,16 +97,16 @@ void customerMenu(){
 				mainMenu();
 			}
 			else{
-				cout<<"\nInvalid Choice Select Only 1,2 and 3"<<endl;
+				cout<<"\n\t\tInvalid Choice Select Only 1,2 and 3"<<endl;
 				customerMenu();
 			}
 }
 void cusLogin(){
 	cin.ignore();
 	string tempUsername,tempPassword;
-	cout<<"Enter username:";
+	cout<<"\t\tEnter username:";
 	getline(cin,tempUsername);
-	cout<<"Enter Password:";
+	cout<<"\t\tEnter Password:";
 	getline(cin,tempPassword);
 	
 	int foundIndex=-1;
@@ -115,41 +115,41 @@ void cusLogin(){
 		if(tempUsername==cusUsername[i]&&tempPassword==cusPassword[i])
 		{
 			foundIndex=i;
-			cout<<"Acess Granted....."<<endl;
+			cout<<"\t\tAcess Granted....."<<endl;
 			cusPortal(foundIndex);
 		}
 	}
 	if(foundIndex==-1){
-		cout<<"Acess Denied....."<<endl;
+		cout<<"\t\tAcess Denied....."<<endl;
 		customerMenu();
 	}
 }
 void cusRegister(){
 	if(totalCustomers>=10)
 	{
-		cout<<"Maximum Number Of Customers Registered"<<endl;
+		cout<<"\t\tMaximum Number Of Customers Registered"<<endl;
 		customerMenu();
 	}
 	else
 	{
 	cin.ignore();
-	cout<<"Enter Name:";
+	cout<<"\t\tEnter Name:";
 	getline(cin,cusName[totalCustomers]);
 	int foundIndex=-1;
 	for(int i=0;i<totalCustomers;i++){
 		if(cusName[totalCustomers]==cusName[i])
 		{
 			foundIndex=i;
-			cout<<"Customer Already Exists with same Name."<<endl;
+			cout<<"\t\tCustomer Already Exists with same Name."<<endl;
 			cusRegister();
 		}	
 	}
-	cout<<"Enter Phone Number:";
+	cout<<"\t\tEnter Phone Number:";
 	getline(cin,cusPhone[totalCustomers]);
-	cout<<"Enter Email:";
+	cout<<"\t\tEnter Email:";
 	getline(cin,cusEmail[totalCustomers]);
 	cusUsername[totalCustomers]=cusEmail[totalCustomers];
-	cout<<"Select Password:";
+	cout<<"\t\tSelect Password:";
 	getline(cin,cusPassword[totalCustomers]);
 	totalCustomers++;
 		
@@ -161,21 +161,21 @@ void cusRegister(){
 void cusPortal(int foundIndex){
 	if(totalCustomers==0)
 	{
-		cout<<"No Customers on Portal"<<endl;
+		cout<<"\t\tNo Customers on Portal"<<endl;
 		customerMenu();
 	}
 	else{
-		cout<<"Customer Details....."<<endl;
-		cout<<"Username:"<<cusUsername[foundIndex]<<endl;
-		cout<<"Name:"<<cusName[foundIndex]<<endl;
-		cout<<"Phone Number:"<<cusPhone[foundIndex]<<endl;
-		cout<<"Email:"<<cusEmail[foundIndex]<<endl;
+		cout<<"\t\tCustomer Details....."<<endl;
+		cout<<"\t\tUsername:"<<cusUsername[foundIndex]<<endl;
+		cout<<"\t\tName:"<<cusName[foundIndex]<<endl;
+		cout<<"\t\tPhone Number:"<<cusPhone[foundIndex]<<endl;
+		cout<<"\t\tEmail:"<<cusEmail[foundIndex]<<endl;
 		if(isCusAvailable[foundIndex]==false)
 		{
-			cout<<"Customer Rental Status: No Rents"<<endl;
+			cout<<"\t\tCustomer Rental Status: No Rents"<<endl;
 		}
 		else{
-			cout<<"Customer Rental Status: Rented A Vehicle"<<endl;
+			cout<<"\t\tCustomer Rental Status: Rented A Vehicle"<<endl;
 			rentVehicle(foundIndex,found);
 		}
 		customerMenu();
@@ -187,90 +187,90 @@ void cusPortal(int foundIndex){
 void adminMenu(){
 	cin.ignore();
 	string tempAdUser,tempAdPass;
-	cout<<"Enter Username:";
+	cout<<"\t\tEnter Username:";
 	getline(cin,tempAdUser);
-	cout<<"Enter Password:";
+	cout<<"\t\tEnter Password:";
 	getline(cin,tempAdPass);
 	
 	if(tempAdUser=="admin"&&tempAdPass=="admin123")
 	{
-		cout<<"Acess Granted....."<<endl;
+		cout<<"\t\tAcess Granted....."<<endl;
 		adminPortal();
 	}
 	else{
-		cout<<"Acess Denied....."<<endl;
+		cout<<"\t\tAcess Denied....."<<endl;
 		adminMenu();
 	}
 }
 void adminPortal(){
-	cout<<"\n\n1. Customer Management"<<endl;
-	cout<<"2. Vehicle Management"<<endl;
-	cout<<"3. Rent Vehicle"<<endl;
-	cout<<"4. Return Vehicle"<<endl;
-	cout<<"5. Transaction Details"<<endl;
-	cout<<"6. Save/Exit"<<endl;
+	cout<<"\n\n\t\t1. Customer Management"<<endl;
+	cout<<"\t\t2. Vehicle Management"<<endl;
+	cout<<"\t\t3. Rent Vehicle"<<endl;
+	cout<<"\t\t4. Return Vehicle"<<endl;
+	cout<<"\t\t5. Transaction Details"<<endl;
+	cout<<"\t\t6. Save/Exit"<<endl;
 	int option;
-	cout<<"Enter:";
+	cout<<"\t\tEnter:";
 	cin>>option;
 	
 	if(option==1)
 	{
-		cout<<"Customer Management"<<endl;
+		cout<<"\t\tCustomer Management"<<endl;
 		cusManagement();
 	}
 	else if(option==2)
 	{
-		cout<<"Vehicle Management"<<endl;
+		cout<<"\t\tVehicle Management"<<endl;
 		vehManagement();
 	}
 	else if(option==3)
 	{
-		cout<<"Rent Vehicle"<<endl;
+		cout<<"\t\tRent Vehicle"<<endl;
 		rentMenu();
 	}
 	else if(option==4)
 	{
-		cout<<"Return Vehicle"<<endl;
+		cout<<"\t\tReturn Vehicle"<<endl;
 		returnMenu();
 	}
 	else if(option==5)
 	{
-		cout<<"Transaction Details"<<endl;
+		cout<<"\t\tTransaction Details"<<endl;
 		transactionMenu();
 	}
 	else if(option==6)
 	{
-		cout<<"Save and exit"<<endl;
+		cout<<"\t\tSave and exit"<<endl;
 		saveMenu();
 	}
 	else{
-		cout<<"Invalid Option Select Only 1,2,3,4,5 and 6"<<endl;
+		cout<<"\t\tInvalid Option Select Only 1,2,3,4,5 and 6"<<endl;
 		adminPortal();
 	}
 }
 void cusManagement(){
-	cout<<"\n\n1.Customer Details"<<endl;
-	cout<<"2. Customer Registration"<<endl;
-	cout<<"3. Search Customer"<<endl;
-	cout<<"4. Back"<<endl;
+	cout<<"\n\n\t\t1.Customer Details"<<endl;
+	cout<<"\t\t2. Customer Registration"<<endl;
+	cout<<"\t\t3. Search Customer"<<endl;
+	cout<<"\t\t4. Back"<<endl;
 	
 	int option;
-	cout<<"Enter:";
+	cout<<"\t\tEnter:";
 	cin>>option;
 	
 	if(option==1)
 	{
-		cout<<"Customer Details"<<endl;
+		cout<<"\t\tCustomer Details"<<endl;
 		cusDetails();
 	}
 	else if(option==2)
 	{
-		cout<<"Customer Registration"<<endl;
+		cout<<"\t\tCustomer Registration"<<endl;
 		cusRegAdmin();
 	}
 	else if(option==3)
 	{
-		cout<<"Search Customer"<<endl;
+		cout<<"\t\tSearch Customer"<<endl;
 		cusSearch();
 	}
 	else if(option==4)
@@ -278,24 +278,24 @@ void cusManagement(){
 		adminPortal();
 	}
 	else{
-		cout<<"Invalid OPtion Select only 1,2,3 and 4"<<endl;
+		cout<<"\t\tInvalid OPtion Select only 1,2,3 and 4"<<endl;
 		cusManagement();
 	}
 }
 void cusDetails(){
 	if(totalCustomers==0)
 	{
-		cout<<"No CUstomers On Portal"<<endl;
+		cout<<"\t\tNo CUstomers On Portal"<<endl;
 		cusManagement();
 	}
 	else{
 	for(int i=0;i<totalCustomers;i++)
 	{
-		cout<<"Customer "<<i+1<<" Details"<<endl;
-		cout<<"Username:"<<cusUsername[i]<<endl;
-		cout<<"Name:"<<cusName[i]<<endl;
-		cout<<"Phone Number:"<<cusPhone[i]<<endl;
-		cout<<"Email:"<<cusEmail[i]<<endl<<endl;
+		cout<<"\t\tCustomer "<<i+1<<" Details"<<endl;
+		cout<<"\t\tUsername:"<<cusUsername[i]<<endl;
+		cout<<"\t\tName:"<<cusName[i]<<endl;
+		cout<<"\t\tPhone Number:"<<cusPhone[i]<<endl;
+		cout<<"\t\tEmail:"<<cusEmail[i]<<endl<<endl;
 	}
 	cusManagement();
 	}
@@ -304,29 +304,29 @@ void cusDetails(){
 void cusRegAdmin(){
 	if(totalCustomers>=10)
 	{
-		cout<<"Maximum Number Of Customers Registered"<<endl;
+		cout<<"\t\tMaximum Number Of Customers Registered"<<endl;
 		cusManagement();
 	}
 	else
 	{
 	cin.ignore();
-	cout<<"Enter Name:";
+	cout<<"\t\tEnter Name:";
 	getline(cin,cusName[totalCustomers]);
 	int foundIndex=-1;
 	for(int i=0;i<totalCustomers;i++){
 		if(cusName[totalCustomers]==cusName[i])
 		{
 			foundIndex=i;
-			cout<<"Customer Already Exists with same Name."<<endl;
+			cout<<"\t\tCustomer Already Exists with same Name."<<endl;
 			cusRegAdmin();
 		}	
 	}
-	cout<<"Enter Phone Number:";
+	cout<<"\t\tEnter Phone Number:";
 	getline(cin,cusPhone[totalCustomers]);
-	cout<<"Enter Email:";
+	cout<<"\t\tEnter Email:";
 	getline(cin,cusEmail[totalCustomers]);
 	cusUsername[totalCustomers]=cusEmail[totalCustomers];
-	cout<<"Select Password:";
+	cout<<"\t\tSelect Password:";
 	getline(cin,cusPassword[totalCustomers]);
 	totalCustomers++;
 	
@@ -337,13 +337,13 @@ void cusRegAdmin(){
 void cusSearch(){
 	if(totalCustomers==0)
 	{
-		cout<<"No Customers On Portal"<<endl;
+		cout<<"\t\tNo Customers On Portal"<<endl;
 		cusManagement();
 	}
 	else{
 		cin.ignore();
 	string sEmail;
-	cout<<"Enter Customer Email:";
+	cout<<"\t\tEnter Customer Email:";
 	getline(cin,sEmail);
 	
 	int foundIndex=-1;
@@ -352,30 +352,30 @@ void cusSearch(){
 		if(sEmail==cusEmail[i])
 		{
 			foundIndex=i;
-			cout<<"Customer"<<i+1<<" Details"<<endl;
-			cout<<"Username:"<<cusUsername[i]<<endl;
-			cout<<"Name:"<<cusName[i]<<endl;
-			cout<<"Phone Number:"<<cusPhone[i]<<endl;
-			cout<<"Email:"<<cusEmail[i]<<endl;
+			cout<<"\t\tCustomer "<<i+1<<" Details"<<endl;
+			cout<<"\t\tUsername:"<<cusUsername[i]<<endl;
+			cout<<"\t\tName:"<<cusName[i]<<endl;
+			cout<<"\t\tPhone Number:"<<cusPhone[i]<<endl;
+			cout<<"\t\tEmail:"<<cusEmail[i]<<endl;
 			cusManagement();
 		}
 	}
 	cusManagement();
 	if(foundIndex==-1)
 	{
-		cout<<"Customer Not Found. Retry!"<<endl;
+		cout<<"\t\tCustomer Not Found. Retry!"<<endl;
 		cusSearch();
 	}
 }
 	
 }
 void vehManagement(){
-	cout<<"\n\n1. Vehicle Details"<<endl;
-	cout<<"2. Vehicle Registration"<<endl;
-	cout<<"3. View Available Vehicles"<<endl;
-	cout<<"4. View Rented Vehicles"<<endl;
-	cout<<"5. Search Vehicle"<<endl;
-	cout<<"6. Back"<<endl;
+	cout<<"\t\t\n\n1. Vehicle Details"<<endl;
+	cout<<"\t\t2. Vehicle Registration"<<endl;
+	cout<<"\t\t3. View Available Vehicles"<<endl;
+	cout<<"\t\t4. View Rented Vehicles"<<endl;
+	cout<<"\t\t5. Search Vehicle"<<endl;
+	cout<<"\t\t6. Back"<<endl;
 	
 	int option;
 	cout<<"Enter:";
@@ -383,27 +383,27 @@ void vehManagement(){
 	
 	if(option==1)
 	{
-		cout<<"Vehicle Details"<<endl;
+		cout<<"\t\tVehicle Details"<<endl;
 		vehDetails();
 	}
 	else if(option==2)
 	{
-		cout<<"Vehicle Registration"<<endl;
+		cout<<"\t\tVehicle Registration"<<endl;
 		vehRegister();
 	}
 	else if(option==3)
 	{
-		cout<<"Available Vehicles"<<endl;
+		cout<<"\t\tAvailable Vehicles"<<endl;
 		vehAvailability();
 	}
 	else if(option==4)
 	{
-		cout<<"Rented Vehicles"<<endl;
+		cout<<"\t\tRented Vehicles"<<endl;
 		vehRentility();
 	}
 	else if(option==5)
 	{
-		cout<<"Search Vehicle"<<endl;
+		cout<<"\t\tSearch Vehicle"<<endl;
 		vehSearch();
 	}
 	else if(option==6)
@@ -411,56 +411,56 @@ void vehManagement(){
 		adminPortal();	
 	}
 	else {
-		cout<<"Invalid Option Select Only 1,2,3,4,5 and 6"<<endl;
+		cout<<"\t\tInvalid Option Select Only 1,2,3,4,5 and 6"<<endl;
 		vehManagement();
 	}
 }
 void vehDetails(){
 	for(int i=0;i<totalVehicles;i++)
 	{
-		cout<<"Vehicle"<<i+1<<" Details"<<endl;
-		cout<<"Vehicle ID:"<<vehId[i]<<endl;
-		cout<<"Vehicle Name:"<<vehName[i]<<endl;
-		cout<<"Vehicle Registration Number:"<<vehNumber[i]<<endl;
+		cout<<"\t\tVehicle "<<i+1<<" Details"<<endl;
+		cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+		cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+		cout<<"\t\tVehicle Registration Number:"<<vehNumber[i]<<endl;
 		if (isVehAvailable[i] == false)
 	{
-    	cout << "Vehicle Status: Available" << endl;
+    	cout << "\t\tVehicle Status: Available" << endl;
 	}
 	else
 	{
-   	cout << "Vehicle Status: Rented" << endl;
+   	cout << "\t\tVehicle Status: Rented" << endl;
 	}
-		cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+		cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 	}
 	vehManagement();
 }
 void vehRegister(){
 	if(totalVehicles>=10)
 	{
-		cout<<"Maximum Number Of Vehicles Registered"<<endl;
+		cout<<"\t\tMaximum Number Of Vehicles Registered"<<endl;
 		vehManagement();
 	}
 	else
 	{
 		cin.ignore();
-	cout<<"Vehicle Name:"<<"VEH-"<<totalVehicles+1<<endl;
+	cout<<"\t\tVehicle Name:"<<"VEH-"<<totalVehicles+1<<endl;
 	vehId[totalVehicles]="VEH-"+to_string(totalVehicles+1);
-	cout<<"Enter Vehicle Name:";
+	cout<<"\t\tEnter Vehicle Name:";
 	getline(cin,vehName[totalVehicles]);
-	cout<<"Enter vehicle Identification Number:";
+	cout<<"\t\tEnter vehicle Identification Number:";
 	getline(cin,vehNumber[totalVehicles]);
 	int foundIndex=-1;
 	for(int i=0;i<totalVehicles;i++){
 		if(vehNumber[totalVehicles]==vehNumber[i])
 		{
 			foundIndex=i;
-			cout<<"Vehicle Already Exists with same Identification Number."<<endl;
+			cout<<"\t\tVehicle Already Exists with same Identification Number."<<endl;
 			vehRegister();
 		}	
 	}
 	isVehAvailable[totalVehicles] = false;
-	cout<<"Vehicle Status: Available"<<endl;
-	cout<<"Enter Vehicle Rent:";
+	cout<<"\t\tVehicle Status: Available"<<endl;
+	cout<<"\t\tEnter Vehicle Rent:";
 	getline(cin,vehRent[totalVehicles]);
 	totalVehicles++;
 		
@@ -475,26 +475,26 @@ void vehAvailability(){
 		if(isVehAvailable[i]==false)
 		{
 		foundIndex=i;
-		cout<<"Vehicle"<<i+1<<" Details"<<endl;
-		cout<<"Vehicle ID:"<<vehId[i]<<endl;
-		cout<<"Vehicle Name:"<<vehName[i]<<endl;
-		cout<<"Vehicle Registration Number:"<<vehNumber[i]<<endl;
+		cout<<"\t\tVehicle"<<i+1<<" Details"<<endl;
+		cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+		cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+		cout<<"\t\tVehicle Registration Number:"<<vehNumber[i]<<endl;
 		if (isVehAvailable[i] == false)
 		{
-	    	cout << "Vehicle Status: Available" << endl;
+	    	cout << "\t\tVehicle Status: Available" << endl;
 		}
 		else
 		{
-	   	cout << "Vehicle Status: Rented" << endl;
+	   	cout << "\t\tVehicle Status: Rented" << endl;
 		}
-			cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+			cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 		}
 	
 	}
 	
 	if(foundIndex==-1)
 	{
-		cout<<"No Available Cars"<<endl;
+		cout<<"\t\tNo Available Cars"<<endl;
 		vehManagement();
 	}
 	vehManagement();
@@ -506,26 +506,26 @@ void vehRentility(){
 		if(isVehAvailable[i]==true)
 		{
 		foundIndex=i;
-		cout<<"Vehicle"<<i+1<<" Details"<<endl;
-		cout<<"Vehicle ID:"<<vehId[i]<<endl;
-		cout<<"Vehicle Name:"<<vehName[i]<<endl;
-		cout<<"Vehicle Registration Number:"<<vehNumber[i]<<endl;
+		cout<<"\t\tVehicle "<<i+1<<" Details"<<endl;
+		cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+		cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+		cout<<"\t\tVehicle Registration Number:"<<vehNumber[i]<<endl;
 		if (isVehAvailable[i] == false)
 		{
-	    	cout << "Vehicle Status: Available" << endl;
+	    	cout << "\t\tVehicle Status: Available" << endl;
 		}
 		else
 		{
-	   	cout << "Vehicle Status: Rented" << endl;
+	   	cout << "\t\tVehicle Status: Rented" << endl;
 		}
-			cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+			cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 		}
 	
 	}
 	
 	if(foundIndex==-1)
 	{
-		cout<<"No Rented Cars"<<endl;
+		cout<<"\t\tNo Rented Cars"<<endl;
 		vehManagement();
 	}
 	vehManagement();
@@ -533,13 +533,13 @@ void vehRentility(){
 void vehSearch(){
 	if(totalVehicles==0)
 	{
-		cout<<"No Vehicles On Portal"<<endl;
+		cout<<"\t\tNo Vehicles On Portal"<<endl;
 		vehManagement();
 	}
 	else{
 		cin.ignore();
 	string tempId;
-	cout<<"Enter Vehicle ID:";
+	cout<<"\t\tEnter Vehicle ID:";
 	getline(cin,tempId);
 	
 	int foundIndex=-1;
@@ -548,25 +548,25 @@ void vehSearch(){
 		if(tempId==vehId[i])
 		{
 			foundIndex=i;
-			cout<<"Vehicle Id:"<<vehId[i]<<endl;
-			cout<<"Vehicle Name:"<<vehName[i]<<endl;
-			cout<<"Vehicle Identification Number:"<<vehNumber[i]<<endl;
+			cout<<"\t\tVehicle Id:"<<vehId[i]<<endl;
+			cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+			cout<<"\t\tVehicle Identification Number:"<<vehNumber[i]<<endl;
 			if (isVehAvailable[totalVehicles] == false)
 		{
-	    	cout << "Vehicle Status: Available" << endl;
+	    	cout << "\t\tVehicle Status: Available" << endl;
 		}
 		else
 		{
-	   	cout << "Vehicle Status: Rented" << endl;
+	   	cout << "\t\tVehicle Status: Rented" << endl;
 		}
-			cout<<"Vehicle Daily Rent:"<<vehRent[i]<<endl;
+			cout<<"\t\tVehicle Daily Rent:"<<vehRent[i]<<endl;
 			vehManagement();
 		}
 	}
 	vehManagement();
 	if(foundIndex==-1)
 	{
-		cout<<"Vehicle Not Found. Retry!"<<endl;
+		cout<<"\t\tVehicle Not Found. Retry!"<<endl;
 		vehSearch();
 	}
 }
@@ -574,7 +574,7 @@ void vehSearch(){
 void rentMenu(){
 	if(totalVehicles==0)
 	{
-		cout<<"No Vehicles On Portal"<<endl;
+		cout<<"\t\tNo Vehicles On Portal"<<endl;
 		adminPortal();
 	}
 	else{
@@ -586,19 +586,19 @@ void rentMenu(){
 		{
 		foundIndex=i;
 		vehAvailable++;
-		cout<<"Vehicle"<<i+1<<" Details"<<endl;
-		cout<<"Vehicle ID:"<<vehId[i]<<endl;
-		cout<<"Vehicle Name:"<<vehName[i]<<endl;
-		cout<<"Vehicle Registration Number:"<<vehNumber[i]<<endl;
+		cout<<"\t\tVehicle "<<i+1<<" Details"<<endl;
+		cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+		cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+		cout<<"\t\tVehicle Registration Number:"<<vehNumber[i]<<endl;
 		if (isVehAvailable[totalVehicles] == false)
 		{
-	    	cout << "Vehicle Status: Available" << endl;
+	    	cout << "\t\tVehicle Status: Available" << endl;
 		}
 		else
 		{
-	   	cout << "Vehicle Status: Rented" << endl;
+	   	cout << "\t\tVehicle Status: Rented" << endl;
 		}
-			cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+			cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 		}
 	
 	}
@@ -607,7 +607,7 @@ void rentMenu(){
 }
 void rentToCustomer(){
 	string tempCusName;
-	cout<<"Enter Customer Name:";
+	cout<<"\t\tEnter Customer Name:";
 	getline(cin,tempCusName);
 	
 	int foundIndex=-1;
@@ -616,27 +616,27 @@ void rentToCustomer(){
 		if(tempCusName==cusName[i])
 		{
 			foundIndex=i;
-			cout<<"Customer "<<i+1<<"Details"<<endl;
-			cout<<"Customer Name:"<<cusName[i]<<endl;
-			cout<<"Customer Phone Number:"<<cusPhone[i]<<endl;
+			cout<<"\t\tCustomer "<<i+1<<"Details"<<endl;
+			cout<<"\t\tCustomer Name:"<<cusName[i]<<endl;
+			cout<<"\t\tCustomer Phone Number:"<<cusPhone[i]<<endl;
 			if(isCusAvailable[i]==false)
 			{
-				cout<<"Customer Rental Status: No Rents"<<endl;
+				cout<<"\t\tCustomer Rental Status: No Rents"<<endl;
 			}
 			else{
-				cout<<"Customer Rental Status: Rented A Vehicle"<<endl;
+				cout<<"\t\tCustomer Rental Status: Rented A Vehicle"<<endl;
 				
 			}
 		}
 	}
 	if(foundIndex==-1)
 	{
-		cout<<"Customer Not Found. Try Again."<<endl;
+		cout<<"\t\tCustomer Not Found. Try Again."<<endl;
 		rentToCustomer();
 	}
 	cin.ignore();
 	string tempVehId;
-	cout<<"Enter Vehicle ID:";
+	cout<<"\t\tEnter Vehicle ID:";
 	getline(cin,tempVehId);
 	
 	int found=-1;
@@ -645,55 +645,55 @@ void rentToCustomer(){
 		if(tempVehId==vehId[i])
 		{
 			found=i;
-			cout<<"Vehicle "<<i+1<<" Details"<<endl;
-			cout<<"Vehicle ID:"<<vehId[i]<<endl;
-			cout<<"Vehicle Name:"<<vehName[i]<<endl;
-			cout<<"Vehicle Identification Number:"<<vehNumber[i]<<endl;
+			cout<<"\t\tVehicle "<<i+1<<" Details"<<endl;
+			cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+			cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+			cout<<"\t\tVehicle Identification Number:"<<vehNumber[i]<<endl;
 			if (isVehAvailable[i] == false)
 			{
-		    	cout << "Vehicle Status: Available" << endl;
+		    	cout << "\t\tVehicle Status: Available" << endl;
 			}
 			else
 			{
-		   	cout << "Vehicle Status: Rented" << endl;
+		   	cout << "\t\tVehicle Status: Rented" << endl;
 			}
-				cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+				cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 		}
 	}
 	if(found==-1)
 	{
-		cout<<"Vehicle Not Found. Try Again"<<endl;
+		cout<<"\t\tVehicle Not Found. Try Again"<<endl;
 		rentToCustomer();
 	}
 	cin.ignore();
 	char option;
-	cout<<"Choose you want to rent this car Y/N:";
+	cout<<"\t\tChoose you want to rent this car Y/N:";
 	cin>>option;
 	
 	if(option=='y'||option=='Y')
 	{
-		cout<<"Proceed"<<endl;
-		cout<<"Number of days you want to rent:";
+		cout<<"\t\tProceed"<<endl;
+		cout<<"\t\tNumber of days you want to rent:";
 		cin>>days[foundIndex];
 		rentAmount[foundIndex]=stof(vehRent[found])*days[found];
 		rentVehicle(foundIndex,found);
 		adminPortal();
 	}
 	else if(option=='n'||option=='N'){
-		cout<<"Cancelled..."<<endl;
+		cout<<"\t\tCancelled..."<<endl;
 		rentToCustomer();
 	}
 	
 	
 }
 void rentVehicle(int foundIndex,int found){
-	cout<<"Vehicle Renting......"<<endl;
-	cout<<"Vehicle ID:"<<vehId[found]<<endl;
-	cout<<"Vehicle Name:"<<vehName[found]<<endl;
-	cout<<"Vehicle Identification Number:"<<vehNumber[found]<<endl;
-	cout<<"Vehicle Daily Rent:"<<vehRent[found]<<endl;
-	cout<<"Number of Rent days:"<<days[foundIndex]<<endl;
-	cout<<"You Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
+	cout<<"\t\tVehicle Renting......"<<endl;
+	cout<<"\t\tVehicle ID:"<<vehId[found]<<endl;
+	cout<<"\t\tVehicle Name:"<<vehName[found]<<endl;
+	cout<<"\t\tVehicle Identification Number:"<<vehNumber[found]<<endl;
+	cout<<"\t\tVehicle Daily Rent:"<<vehRent[found]<<endl;
+	cout<<"\t\tNumber of Rent days:"<<days[foundIndex]<<endl;
+	cout<<"\t\tYou Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
 	isVehAvailable[found]=true;
 	customerVehicle[foundIndex] = found;
 	vehAvailable--;
@@ -706,13 +706,13 @@ void rentVehicle(int foundIndex,int found){
 void returnMenu(){
 	if(vehRented==0)
 	{
-		cout<<"No Vehicles Rented."<<endl;
+		cout<<"\t\tNo Vehicles Rented."<<endl;
 		adminPortal();
 	}
 	else{
 		cin.ignore();
 	string tempVehId;
-	cout<<"Enter Vehicle Number:";
+	cout<<"\t\tEnter Vehicle Number:";
 	getline(cin,tempVehId);
 	
 	int foundIndex=-1;
@@ -721,70 +721,70 @@ void returnMenu(){
 		if(tempVehId==vehId[i])
 		{
 			foundIndex=i;
-			cout<<"Vehicle Details"<<endl;
-			cout<<"Vehicle ID:"<<vehId[i]<<endl;
-			cout<<"Vehicle Name:"<<vehName[i]<<endl;
-			cout<<"Vehicle Identification Number:"<<vehNumber[i]<<endl;
+			cout<<"\t\tVehicle Details"<<endl;
+			cout<<"\t\tVehicle ID:"<<vehId[i]<<endl;
+			cout<<"\t\tVehicle Name:"<<vehName[i]<<endl;
+			cout<<"\t\tVehicle Identification Number:"<<vehNumber[i]<<endl;
 			if (isVehAvailable[i] == false)
 	{
-    	cout << "Vehicle Status: Available" << endl;
+    	cout << "\t\tVehicle Status: Available" << endl;
 	}
 	else
 	{
-   	cout << "Vehicle Status: Rented" << endl;
+   	cout << "\t\tVehicle Status: Rented" << endl;
 	}
-		cout<<"Vehicle  Daily Rent:"<<vehRent[i]<<endl;
+		cout<<"\t\tVehicle  Daily Rent:"<<vehRent[i]<<endl;
 		}
 	}
 	if(foundIndex==-1)
 	{
-		cout<<"Vehicle Not Found. Try Again"<<endl;
+		cout<<"\t\tVehicle Not Found. Try Again"<<endl;
 		returnMenu();
 	}
 	if(isVehAvailable[foundIndex] == true)
 	{
 		char option;
-		cout<<"Vehicle is Rented."<<endl;
-		cout<<"Do You Wish To Return the vehicle Y/N:"<<endl;
+		cout<<"\t\tVehicle is Rented."<<endl;
+		cout<<"\t\tDo You Wish To Return the vehicle Y/N:"<<endl;
 		cin>>option;
 		
 		if(option=='y'||option=='Y')
 		{
-			cout<<"Vehicle Returned...."<<endl;
-			cout<<"You Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
+			cout<<"\t\tVehicle Returned...."<<endl;
+			cout<<"\t\tYou Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
 			payRent(foundIndex);
 			adminPortal();
 		}
 		else if(option=='n'||option=='N'){
-			cout<<"You Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
+			cout<<"\t\tYou Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
 			adminPortal();
 		}
 		else{
-			cout<<"Invalid Option. Select only Y/N or y/n..."<<endl;
+			cout<<"\t\tInvalid Option. Select only Y/N or y/n..."<<endl;
 			returnMenu();
 		}
 	}
 	else{
-		cout<<"Vehicle is'nt  Rented.."<<endl;
+		cout<<"\t\tVehicle is'nt  Rented.."<<endl;
 		adminPortal();
 	}
 }	
 }
 void payRent(int foundIndex){
 	char option;
-	cout<<"Do You Want To Pay The Rent:";
+	cout<<"\t\tDo You Want To Pay The Rent:";
 	cin>>option;
 	
 	if(option=='y'||option=='Y')
 	{
-		cout<<"Paying Rent..."<<endl;
+		cout<<"\t\tPaying Rent..."<<endl;
 		float howMuch;
-		cout<<"Enter Amount:";
+		cout<<"\t\tEnter Amount:";
 		cin>>howMuch;
 		
 		if(howMuch>rentAmount[foundIndex]||howMuch<rentAmount[foundIndex])
 		{
-			cout<<"You Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
+			cout<<"\t\tYou Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
 			payRent(foundIndex);
 		}
 		else{
@@ -808,17 +808,17 @@ void payRent(int foundIndex){
 	}
 	else if(option=='n'||option=='N')
 	{
-		cout<<"You Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
+		cout<<"\t\tYou Owe:"<<rentAmount[foundIndex]<<" Rs."<<endl;
 		adminPortal();
 	}
 	else {
-		cout<<"Invalid Option. Select only Y/N or y/n."<<endl;
+		cout<<"\t\tInvalid Option. Select only Y/N or y/n."<<endl;
 		payRent(foundIndex);
 	}
 }
 
 void transactionMenu(){
-	cout<<"Business Revenue :"<<businessRevenue<<endl;
+	cout<<"\t\tBusiness Revenue :"<<businessRevenue<<endl;
 	adminPortal();
 }
 void saveMenu(){
